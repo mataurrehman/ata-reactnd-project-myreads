@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookItem from './BookItem'
+import DebounceInput from 'react-debounce-input';
 
 class SearchBooks extends Component {
     state = {
@@ -37,7 +38,7 @@ class SearchBooks extends Component {
                 <div className="search-books-bar">
                     <Link to="/" className="close-search">Close</Link>
                     <div className="search-books-input-wrapper">
-                        <input type="text" placeholder="Search by title or author" value={searchQuery} onChange={(event) => this.updateQuery(event.target.value)} />
+                        <DebounceInput debounceTimeout={500} type="text" placeholder="Search by title or author" value={searchQuery} onChange={(event) => this.updateQuery(event.target.value)} />
                     </div>
                 </div>
                 <div className="search-books-results">
